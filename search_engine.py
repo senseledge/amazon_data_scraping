@@ -1,11 +1,6 @@
-import collections
-import math
+import collections, math
 import pandas as pd
-from preprocessing import import_items, item_preprocessing
-
-data = import_items('items_data.tsv')
-
-data['preprocessed_descr'] = data['description'].apply(item_preprocessing)
+from preprocessing import item_preprocessing
 
 def build_inverted_index(docs):
     '''
@@ -107,11 +102,3 @@ def search_engine(query, inverted_index, data):
     results = results.sort_values(by=['cos_sim'], ascending=False)
 
     return results
-
-
-inverted = build_inverted_index(data)
-print(inverted)
-
-print('Results:')
-print(search_engine("intel", inverted, data))
-
