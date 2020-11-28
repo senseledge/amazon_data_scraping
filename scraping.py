@@ -18,7 +18,7 @@ user_agent_list = [
 # Generate the URLs for all the search results pages
 def generate_urls(model_url):
     urls = []
-    for n in range(3, 30):
+    for n in range(30, 100):
         n_url = model_url.format(n)
         urls.append(n_url)
 
