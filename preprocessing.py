@@ -53,10 +53,3 @@ def item_preprocessing(descr_text):
     filtered_token = FreqDist(filtered_token).most_common(50)
 
     return filtered_token
-
-data = import_items('items_data.tsv')
-
-data['preprocessed_descr'] = data['description'].apply(item_preprocessing)
-
-
-print(data)

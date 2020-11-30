@@ -1,5 +1,6 @@
 from preprocessing import import_items, item_preprocessing
 from search_engine import build_inverted_index, search_engine
+from tabulate import tabulate
 
 '''
 Main of the application
@@ -14,11 +15,10 @@ data['preprocessed_descr'] = data['description'].apply(item_preprocessing)
 # Build the inverted index and save it in a csv file
 inverted_index = build_inverted_index(data)
 inverted_index.to_csv('inverted_index.csv')
-print(inverted_index)
 
 # Set the query string
-QUERY_STRING = 'intel i5'
+QUERY_STRING = 'portatile con i7 e 16gb di ram'
 
 # Print the results order by cosine similarity
-print('Results order by cosine similarity:')
-print(search_engine(QUERY_STRING, inverted_index, data))
+print('Results for "' + QUERY_STRING + '" order by cosine similarity:')
+print(tabulate(search_engine(QUERY_STRING, inverted_index, data), headers='firstrow'))
