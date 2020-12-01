@@ -1,5 +1,6 @@
 from preprocessing import import_items, item_preprocessing
 from search_engine import build_inverted_index, search_engine
+import pandas as pd
 from tabulate import tabulate
 
 '''
@@ -17,8 +18,11 @@ inverted_index = build_inverted_index(data)
 inverted_index.to_csv('inverted_index.csv')
 
 # Set the query string
-QUERY_STRING = 'portatile con i7 e 16gb di ram'
+QUERY_STRING = 'microsoft Surface book con processore intel i7, RAM da 16gb e 512 tera'
 
 # Print the results order by cosine similarity
 print('Results for "' + QUERY_STRING + '" order by cosine similarity:')
-print(tabulate(search_engine(QUERY_STRING, inverted_index, data), headers='firstrow'))
+results = search_engine(QUERY_STRING, inverted_index, data)
+results = results[['cos_sim', 'id', 'description', 'price', 'prime', 'stars', 'preprocessed_descr', 'link']]
+
+print(results)

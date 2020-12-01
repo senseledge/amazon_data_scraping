@@ -115,12 +115,13 @@ def spark_search_engine(query, inverted_index, data):
     return results
 
 # Set the query string
-QUERY_STRING = 'portatile con i7 e 16gb di ram'
+QUERY_STRING = 'pc portatile con custodia'
 
 # Start the search engine
 result = spark_search_engine(QUERY_STRING, inverted_index, df)
 
 # Show the query results
+result = result.select('cos_sim', 'id', 'description', 'price', 'prime', 'stars', 'preprocessed_descr', 'link')
 result.show(20, truncate=False)
 
 # Close the spark context
