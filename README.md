@@ -21,3 +21,7 @@ inverted_index.csv is the builded inverted index at runtime
 inverted_index is the Spark RDD of the builded inverted index
 
 (In the 'screenshoots' directory there are short and long query test both for Pandas and Spark search engine)
+
+## COVID ML Usage
+* Download the train.csv into the covid_dataset directory
+* Run the Python module main_covid.py
